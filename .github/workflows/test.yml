@@ -41,14 +41,21 @@ jobs:
     steps:
       - shell: bash
         run: |
-          expr 3 + 7 > <RESULT_FILE_NAME>
+          expr 3 + 7 > test.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: test.txt
 
   job_2:
     name: Multiply by 9
     needs: job_1
     runs-on: windows-latest
     steps:
+      - uses: actions/download-artifact@v5
+        with:
+          name: my-artifact
       - shell: bash
         run: |
-          value=`cat <ARTIFACT_FILE_NAME>`
+          value=`cat test.txt`
           echo $(expr $value \* 9) 
