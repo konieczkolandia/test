@@ -35,3 +35,6 @@ jobs:
         echo "Should NOT be variable in step scope:$STEP_VAR"
        env: 
          STEP_VAR: "step"
+
+     - name: All envs
+       run: env
