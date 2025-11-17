@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Set color
         id: color-selector
-        run: echo "selected-color="colorek" >> $GITHUB_OUTPUT
+        run: echo "message='czerwony'" >> $GITHUB_OUTPUT
         
       - name: Get color
         run: echo "The selected color is ${{ steps.color-selector.outputs.selected-color }} "
